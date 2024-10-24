@@ -447,7 +447,7 @@ export async function addCounty(name: string, code: string, countryId: number) {
 		await db
 			.insert(countiesTable)
 			.values({ name, code, slug: MakeSlugify(name), countryId });
-		return { message: `Successfully added county: ${name}`, code: 20 };
+		return { message: `Successfully added county: ${name}`, code: 200 };
 	}
 }
 
@@ -579,7 +579,7 @@ export async function deleteCountry(id: number) {
 	const associate_record = await db
 		.select()
 		.from(countiesTable)
-		.where(eq(countriesTable.id, id));
+		.where(eq(countiesTable.countryId, id));
 	if (associate_record.length) {
 		return {
 			message: `Cannot delete Country (id : ${id}). It's associated with County Table`,

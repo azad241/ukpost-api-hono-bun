@@ -284,24 +284,24 @@ Body:
 
 ### Put and Delete Requests
 
-### Update county
+### Update country
 ```http
-PUT /county/:id
+PUT /country/:id
 ```
 
 Body:
 | Parameter | Type   | Description                           |
 |-----------|--------|---------------------------------------|
-| name      | string | County name (max 50 chars)            |
+| name      | string | Country name (max 50 chars)            |
 | iso       | string | ISO code (max 3 chars)                |
 
 
-### Delete county
+### Delete country
 ```http
-DELETE /county/:id
+DELETE /country/:id
 ```
 
 Parameters:
 | Parameter | Type   | Description                           |
 |-----------|--------|---------------------------------------|
-| id        | number | ID of the county to delete            |
+| id        | number | ID of the country to delete            |

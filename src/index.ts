@@ -211,8 +211,11 @@ app.post('/county/', async (c) => {
 				400
 			);
 		}
-		const status = await addCounty(name, code, countryId);
-		return c.json({ message: status.message }, status.code as StatusCode);
+		else {
+			const status = await addCounty(name, code, countryId);
+			return c.json({ message: status.message }, status.code as StatusCode);
+		}
+
 	} catch (error) {
 		return c.json({ message: 'Invalid JSON or request body' }, 400);
 	}
@@ -373,7 +376,7 @@ app.post('/postcode/', async (c) => {
 //1 update and 1 delete request
 
 //delete a country
-app.delete('/county/:id', async (c) => {
+app.delete('/country/:id', async (c) => {
 	try {
 		const { id } = c.req.param();
 		const status = await deleteCountry(parseInt(id));
@@ -384,7 +387,7 @@ app.delete('/county/:id', async (c) => {
 });
 
 //update a country
-app.put('/county/:id', async (c) => {
+app.put('/country/:id', async (c) => {
 	try {
 		const { id } = c.req.param();
 		let body: any;
