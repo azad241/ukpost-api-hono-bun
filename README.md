@@ -68,10 +68,8 @@ bun run dev
 ```
 ## Usage
 
-### Start the API
 
-
-## API Endpoints
+### API Endpoints
 
 ### GET Requests
 
