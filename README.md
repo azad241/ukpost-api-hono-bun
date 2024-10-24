@@ -68,7 +68,6 @@ bun run dev
 ```
 ## Usage
 
-
 ### API Endpoints
 
 ### GET Requests
@@ -81,7 +80,7 @@ GET /postcode/
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `skip` | `int` | (**Optional**) To skip from the begaining (default: 0) |
+| `skip` | `int` | (**Optional**) To skip from the begaining |
 | `limit` | `int` | (**Optional**)To limit the number of item (default: 21) |
 | `query` | `string` | (**Optional**) To filter by query |
 
@@ -306,6 +305,3 @@ Parameters:
 | Parameter | Type   | Description                           |
 |-----------|--------|---------------------------------------|
 | id        | number | ID of the county to delete            |
-
-
-

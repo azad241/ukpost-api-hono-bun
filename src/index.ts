@@ -45,7 +45,7 @@ app.use(
 	})
 );
 
-//2. checking api url in headers
+//2. checking api url in header
 app.use('*', async (c, next) => {
 	const host = c.req.header('host');
 	const api_domain = process.env.API_DOMAIN!;
