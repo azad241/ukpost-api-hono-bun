@@ -1,0 +1,15 @@
+{
+  "name": "ukpost-hono-bun",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "start": "bun run src/index.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.35.2",
+    "hono": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.11",
+    "drizzle-kit": "^0.26.2"
+  }
+}

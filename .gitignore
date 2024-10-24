@@ -1,0 +1,8 @@
+# deps
+node_modules/
+drizzle/
+.env
+mydb.sqlite
+*.sqlite
+*.db
+tmp/
