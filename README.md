@@ -10,7 +10,7 @@ This project is a backend API built with [Hono.js](https://hono.dev/), powered b
 - [API Endpoints](#api-endpoints)
   - [GET Requests](#get-requests)
   - [POST Requests](#post-requests)
-  - [PUT and DELETE Requests](#put-and-delete-requests)
+  - [Put and Delete Requests](#put-and-delete-requests)
 
 
 ### Prerequisites
@@ -19,7 +19,7 @@ This project is a backend API built with [Hono.js](https://hono.dev/), powered b
 - [Node.js](https://nodejs.org) (for npm package management)
 - A database system for storing country, county, district, ward, and postcode data.
 
-### Setup
+## Installation
 
 1. Clone the repository:
 
@@ -71,14 +71,14 @@ bun run dev
 ### Start the API
 
 
-## API Reference
+## API Endpoints
 
-### All Get Requests
+### GET Requests
 
 #### Get all postcodes (4-digit)
 
 ```http
-  GET /postcode/
+GET /postcode/
 ```
 
 | Parameter | Type     | Description                |
@@ -209,7 +209,7 @@ Parameters:
 | limit      | int    | (**Optional**) Number of items to return (default: 21) |
 
 
-### All Post Requests
+### POST Requests
 
 ## Add country
 ```http
@@ -285,7 +285,7 @@ Body:
 | code      | string | Three-digit code (max 3 chars)        |
 
 
-### Update and Delete Requests
+### Put and Delete Requests
 
 ### Update county
 ```http

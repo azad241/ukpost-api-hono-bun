@@ -37,7 +37,7 @@ app.use(
 	cors({
 		origin: origins,
 		allowHeaders: ['X-Custom-Header', 'Upgrade-Insecure-Requests'],
-		allowMethods: ['POST', 'GET', 'UPDATE', 'DELETE'],
+		allowMethods: ['POST', 'GET', 'PUT', 'DELETE'],
 		exposeHeaders: ['*'],
 		maxAge: 600,
 		credentials: true,
