@@ -81,7 +81,7 @@ GET /postcode/
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `skip` | `int` | (**Optional**) To skip from the begaining |
+| `skip` | `int` | (**Optional**) To skip from the begaining (default: 0) |
 | `limit` | `int` | (**Optional**)To limit the number of item (default: 21) |
 | `query` | `string` | (**Optional**) To filter by query |
 
