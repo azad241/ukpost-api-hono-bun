@@ -24,8 +24,8 @@ This project is a backend API built with [Hono.js](https://hono.dev/), powered b
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/azad241/ukpost-api-hono-bun
+    cd ukpost-api-hono-bun
     ```
 
 2. Install dependencies:
