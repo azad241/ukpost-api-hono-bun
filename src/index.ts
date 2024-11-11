@@ -11,6 +11,7 @@ import {
 	getWard,
 	getDistrict,
 	getPostcodes,
+	getRelatedResults,
 } from './db/crud';
 
 import {
@@ -67,9 +68,7 @@ app.get('/', (c) => c.json({ status: 'Working...(Rutime: Bun)' }));
 
 //robots.txt
 app.get('/robots.txt', (c) => {
-	return c.text('User-agent: *\nDisallow: /', 200, {
-		'Content-Type': 'text/plain',
-	});
+	return c.text('User-agent: *\nDisallow: /', 200, { 'Content-Type': 'text/plain' });
 });
 
 // Searching
@@ -78,13 +77,36 @@ app.get('/search/', async (c) => {
 	const skip = parseInt(c.req.query('skip') || '0');
 	const limit = parseInt(c.req.query('limit') || '20');
 
-	const results = await getSearchResults(
-		skip,
-		limit,
-		query.toLowerCase(),
-		querytype.toLowerCase()
-	);
+	const results = await getSearchResults(skip, limit, query.toLowerCase(), querytype.toLowerCase());
 	return c.json(results);
+});
+
+// Related Postcode by wardId
+app.get('/related/', async (c) => {
+	const { id } = c.req.query();
+	const results = await getRelatedResults(parseInt(id));
+	return c.json(results);
+});
+
+//Details from advance api
+app.get('/details/', async (c) => {
+	const { postcode = '' } = c.req.query();
+	try {
+		const response = await fetch(`${process.env.SECRET_API}${encodeURIComponent(postcode)}?output=json`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		if (!response.ok) {
+			return c.json({ error: 'Error fetching data' }, 500);
+		}
+		const data = await response.json();
+		return c.json(data);
+	} catch (error) {
+		console.error('Fetch error:', error);
+		return c.json({ error: 'Error fetching data' }, 500);
+	}
 });
 
 // Get 4 digit postcode
@@ -210,12 +232,10 @@ app.post('/county/', async (c) => {
 				},
 				400
 			);
-		}
-		else {
+		} else {
 			const status = await addCounty(name, code, countryId);
 			return c.json({ message: status.message }, status.code as StatusCode);
 		}
-
 	} catch (error) {
 		return c.json({ message: 'Invalid JSON or request body' }, 400);
 	}

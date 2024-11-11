@@ -406,6 +406,21 @@ export async function getSearchResults(
 	}
 }
 
+//get related postcodes by wardId
+export async function getRelatedResults(id: number) {
+	return db.select(
+		{
+			fourdigit: fourdigitsTable.code,
+			threedigit: threedigitsTable.code
+		}
+	)
+		.from(postcodesTable)
+		.innerJoin(fourdigitsTable, eq(fourdigitsTable.id, postcodesTable.fourdigitId))
+		.innerJoin(threedigitsTable, eq(threedigitsTable.id, postcodesTable.threedigitId))
+		.where(eq(postcodesTable.wardId, id))
+		.offset(0).limit(15);
+}
+
 //all post requests
 
 // Add country
